@@ -1,0 +1,35 @@
+
+<h4>Postagens : </h4>
+<a href="/admin/postagens/adicionar"><button type="button" class="btn btn-info">Adicionar Postagem</button></a>
+
+
+{{#each postagens}}
+<div class="card mt-4">
+  <div class="card text-center">
+  <div class="form-group">
+      <div class="card-header">
+        <small>Slug: {{slug}}</small> || 
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de Criação : {{#formatDate date}}{{/formatDate}}</small>
+  </div>
+
+  <div class="card-body">
+         <h4>{{titulo}}</h4>
+         <h5>{{descricao}}</h5>
+         <br>
+          <p>{{conteudo}}</p>
+  </div>
+ </div>
+  <div class="card-footer text-muted">
+     <a href="/admin/postagens/editar/{{_id}}"><button type="submit" class="btn btn-info">Editar</button></a>
+         <form action="/admin/postagens/excluir" method="POST">
+      <input  type="hidden" name="id" value="{{_id}}">
+      <button type="submit" class="btn btn-danger mt-2">Excluir</button>
+    </form>
+   
+</div>
+</div>
+{{else}}
+<h4>Nenhuma Postagem Registrada</h4>
+{{/each}}
+

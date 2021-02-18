@@ -1,0 +1,18 @@
+{{#each categorias}}
+<div class="card mt-3">
+  <div class="card text-center">
+  <div class="form-group">
+      <div class="card-header">
+           <a href="/categorias/{{slug}}"><h4>{{nome}}</h4></a>
+  </div>
+  <div class="card-body">
+     <small>Slug: {{slug}}</small>
+     <br>
+     <small>Data de Criação : {{#formatDate date}}{{/formatDate}}</small>         
+  </div>
+ </div>
+</div>
+</div>
+{{else}}
+<h4>Nenhuma categoria Registrada</h4>
+{{/each}}

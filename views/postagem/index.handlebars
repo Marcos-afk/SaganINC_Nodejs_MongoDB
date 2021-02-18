@@ -1,0 +1,19 @@
+<div class="card mt-4">
+  <div class="card text-center">
+  <div class="form-group">
+      <div class="card-header">
+        <small>Slug: {{postagem.slug}}</small> || 
+        <small>Categoria: {{postagem.categoria.nome}}</small><br>
+        <small>Data de Criação : {{#formatDate postagem.date}}{{/formatDate}}</small>
+  </div>
+
+  <div class="card-body">
+         <h4>{{postagem.titulo}}</h4>
+         <h5>{{postagem.descricao}}</h5>
+         <br>
+          <p>{{postagem.conteudo}}</p>
+  </div>
+ </div>
+
+</div>
+

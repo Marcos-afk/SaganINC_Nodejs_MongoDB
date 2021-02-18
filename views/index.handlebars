@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h1 class="display-4">Bem Vindo ao Sagan INC</h1>
+    <p class="lead">Site de divulgação científca, com o obejtivo de tornar o acesso ao conhecimento de forma mais simples e fácil.Aqui você encontrará conteúdos das mais variadas áreas da ciência...</p>
+</div>
+
+<hr>
+
+
+<h2 id="texto" >Postagens Recentes: </h2>
+{{#each postagens}}
+<div class="card mt-4">
+  <div class="card text-center">
+  <div class="form-group">
+      <div class="card-header">
+        <small>Slug: {{slug}}</small> || 
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de Criação : {{#formatDate date}}{{/formatDate}}</small>
+  </div>
+
+  <div class="card-body">
+         <h4>{{titulo}}</h4>
+         <h5>{{descricao}}</h5>
+         <br>
+         <a href="/postagem/{{slug}}"><button  class="btn btn-info">Leia mais</button></a>
+  </div>
+ </div>
+  
+</div>
+</div>
+{{else}}
+<h4>Nenhuma Postagem Registrada</h4>
+{{/each}}
+
+
+
+<style>
+    h2#texto{
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+    }
+</style>

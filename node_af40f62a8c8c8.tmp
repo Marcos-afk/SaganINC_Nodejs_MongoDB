@@ -1,0 +1,70 @@
+//módulos
+const express = require('express')
+const handlebars = require('express-handlebars')
+const bodyParser = require('body-parser')
+const moongose = require('mongoose')
+const app = express()
+const path = require('path')
+const admin = require('./routes/admin')
+const session = require('express-session')
+const flash = require('connect-flash')
+const moment = require('moment')
+
+//configurações
+app.use(session({
+    secret: "3.14PI",
+    resave: true,
+    saveUninitialized: true
+}))
+
+app.use(flash())
+
+app.use((req, res, next)=>{
+    res.locals.sucesso =  req.flash("sucesso")
+    res.locals.fracasso = req.flash("fracasso")
+    next()
+})
+
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
+app.engine('handlebars', handlebars({
+    defaultLayout: 'main',
+    helpers: {
+        formatDate: (date) => {
+             return moment(date).format('DD/MM/YYYY')
+         }
+        },
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        }
+
+}))
+app.set('view engine', 'handlebars')
+
+//conexão com o banco de dados
+moongose.Promise = global.Promise
+moongose.connect('mongodb://localhost/SaganINC',{
+    useNewUrlParser: true ,
+    useUnifiedTopology: true
+}).then(()=>{
+    console.log('Conexão com o banco bem sucedida')
+}).catch((erro)=>{
+    console.log('Erro ao se conectar: ' + erro)
+})
+
+//arquivos estáticos css/js
+app.use(express.static(path.join(__dirname,'public')))
+
+//rotas
+app.use('/admin',admin)
+
+
+//criando server
+const PORT = 8081
+app.listen(PORT,()=>{
+    console.log('Servidor rodando , url : http://localhost:8081')
+})
+
+

@@ -1,0 +1,66 @@
+{{#each erros}}
+    <div class="alert alert-danger">
+      {{text}}
+    </div>
+{{else}}
+{{/each}}
+<div class="card">
+<form action="/admin/postagens/nova" method="POST">
+  <div class="card text-center">
+  <div class="form-group">
+      <div class="card-header">
+           <label for="titulo">Titulo</label>
+  </div>
+  <div class="card-body">
+    <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo da postagem">  
+  </div>
+  <div class="card-header">
+            <label for="slug">Slug</label>
+        </div>
+  <div class="card-body">
+      <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug da postagem">
+  </div>
+
+  <div class="card-header">
+            <label for="descricao">Descrição</label>
+        </div>
+        <div class="card-body">
+            <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição da postagem">
+
+        </div>
+    
+  </div>
+  <div class="form-group">
+        <div class="card-header">
+           <label for="conteudo">Conteúdo</label>
+  </div>
+        <div class="card-body">
+            <textarea name="conteudo" id="conteudo" class="form-control" placeholder="Digite aqui o conteúdo da postagem"></textarea>
+        </div>
+        <div class="card-header">
+           <label for="categoria">Categoria</label>
+  </div>
+  <div class="card-body">
+            <select name="categoria" id="categoria" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected value="0" >Selecione uma categoria</option>
+                {{#each categorias}}
+                <option value="{{_id}}">
+                    {{nome}}
+                </option>
+                {{else}}
+                 <option value="0">
+                    Não há categorias cadastradas
+                </option>
+                {{/each}}
+            </select>
+        </div>
+  </div>
+  </div>
+  <div class="card-footer text-muted">
+     <button type="submit" class="btn btn-info mt-2">Confirmar Adição</button>
+  </div>
+ </div>
+</form>
+
+</div>
+
