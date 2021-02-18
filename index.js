@@ -129,7 +129,7 @@ app.get('/categorias/:slug' ,(req,res)=>{
                 res.redirect('/')
             })
         }else{
-            req.flash('fracasso' , 'Categoria não existe')
+            req.flash('fracasso' , 'Faça Login para acessar essa área')
             res.redirect('/')
 
         }
