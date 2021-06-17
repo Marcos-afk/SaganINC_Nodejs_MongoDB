@@ -1,6 +1,6 @@
 # SaganINC
--Node js
--MongoDB
+- Node js
+- MongoDB
 
 Informações:
 - Não usuários possuem acesso as postagens mais recentes no feed, porém de forma limitada.
